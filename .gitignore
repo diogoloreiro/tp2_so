@@ -1,0 +1,20 @@
+# Executaveis compilados (cada um gera os seus com 'make')
+produto_escalar_seq
+produto_escalar_par
+matmul_seq
+matmul_par
+*.exe
+*.o
+*.obj
+
+# Cache do Python
+__pycache__/
+*.pyc
+
+# Resultados gerados (cada um gera os seus rodando o benchmark)
+*.csv
+graficos/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
