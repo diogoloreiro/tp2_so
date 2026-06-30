@@ -107,13 +107,6 @@ gcc -O2 -Wall matmul_par.c          -o matmul_par.exe -pthread
 
 O **fluxo completo** é:
 
-### Linux / macOS
-```bash
-make              # 1) compila
-./benchmark.sh    # 2) roda tudo e gera os 2 CSVs
-make graficos     # 3) gera os gráficos PNG na pasta graficos/
-```
-
 ### Windows (PowerShell)
 ```powershell
 # 1+2) compila (se preciso) e gera os 2 CSVs:
@@ -148,18 +141,3 @@ O trabalho pede medir em **2 computadores com quantidades de CPUs diferentes**. 
    ```
    O script gera um conjunto de gráficos **por máquina** e imprime as tabelas de speedup separadas por máquina.
 
-> Dica: nos arrays de configuração do benchmark (`THREADS` no `.sh` / `$Threads` no `.ps1`), use valores compatíveis com o número de núcleos de cada PC.
-
----
-
-## 📝 Notas técnicas
-
-- **Por que não há `mutex` no cálculo?** Cada thread escreve em uma região exclusiva da saída (posição própria no produto escalar; linhas diferentes da matriz C). As entradas só são lidas. Logo, **não há condição de corrida**. (No modo verboso há um mutex apenas para organizar os `prints` na tela — ele não protege o cálculo.)
-- **Produto escalar é *memory-bound*:** o ganho com threads satura cedo (limitado pela banda de memória).
-- **Multiplicação de matrizes é *CPU-bound*:** escala melhor com threads, mas a eficiência cai em CPUs com núcleos de velocidades diferentes (ex.: Intel com P-cores e E-cores).
-
----
-
-## 👥 Equipe
-
-- _(preencher com os nomes do grupo)_
